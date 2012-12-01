@@ -3,7 +3,7 @@ Contributors: ethoseo, nquinlan
 Tags: analytics, google analytics, tracking, event tracking, link tracking, email tracking, form submissions
 Requires at least: 3.0.1
 Tested up to: 3.4.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -34,8 +34,11 @@ To track something enter its CSS (_or jQuery_) selector; `Category`, `Action` , 
 = What is a CSS selector and how do I find it?  =
 A CSS selector is a way of referencing a specific object on a page. To find it we reccomend you use [Selector Gadget](http://www.selectorgadget.com/)
 
-= What are `Category`, `Action` , and `Label`?  =
-`Category`, `Action` , and `Label` are all ways to [define events in Google Analytics](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#Anatomy). 
+= What are Category, Action , and Label?  =
+They are all ways to [define events in Google Analytics](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#Anatomy).
+
+= Can you give me a more in depth explanation of Track Everything and how to use it? =
+Yeah! [Check out Track Everything on our website](http://www.ethoseo.com/tools/track-everything).
 
 
 == Screenshots ==
@@ -46,5 +49,16 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 
 == Changelog ==
 
+= 1.0.1 =
+* Major Analytics Bug Fixes
+
 = 1.0 =
 * The intial release.
+
+== Upgrade Notice ==
+
+= 1.0.1 =
+This version fixes bugs in the way Track Everything labels items.
+
+= 1.0 = 
+Initial release.

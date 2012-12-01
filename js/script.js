@@ -1,7 +1,7 @@
 function calculateLabel ($obj, possibilities){
-	var possibilities = (typeof possibilities == 'object') ? a : ["te_name", "name", "title", "id"];
+	var possibilities = (typeof possibilities == 'object') ? possibilities : ["te_name", "name", "title", "id"];
 	var eventLabel = null;
-	for (var i = possibilities.length - 1; i >= 0; i--) {
+	for (var i = 0; i <= (possibilities.length - 1); i++) {
 		var possibility = $obj.attr(possibilities[i]);
 		if(possibility && possibility.length){
 			eventLabel = possibility;
@@ -53,11 +53,11 @@ jQuery(function ($){
 		$('a[href^="mailto:"]').on("click.jqte.jqtedefault keypress.jqte.jqtedefault", function (e) {
 			var eventLabel = $(this).attr("href").substring(7);
 
-			var eventInfo = ['_trackEvent', 'Link', 'Email', eventLabel, null, true];
+			var eventInfo = ['_trackEvent', 'Link', 'Email', eventLabel];
 			pushEvent(eventInfo);
 		});
 		if(window.trackeverything.settings.debug){
-			$('a[href^="mailto:"]').addClass("track-everything track-everything-default track-everything-outbound");
+			$('a[href^="mailto:"]').addClass("track-everything track-everything-default track-everything-email");
 		}
 	}
 	for (var i = window.trackeverything.special.length - 1; i >= 0; i--) {
