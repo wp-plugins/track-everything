@@ -50,7 +50,8 @@ Yeah! [Check out Track Everything on our website](http://www.ethoseo.com/tools/t
 == Changelog ==
 
 = 1.0.1 =
-* Major Analytics Bug Fixes
+* Fixed bug in the way events were labeled
+* Made clicking an email an interaction rather than a non-interaction
 
 = 1.0 =
 * The intial release.
