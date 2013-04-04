@@ -21,7 +21,9 @@ Nick of Ethoseo Internet Marketing
 			update_option("ethoseo_te_trackoutbound", $_POST['trackoutbound']);
 			update_option("ethoseo_te_tracksearchforms", $_POST['tracksearchforms']);
 			update_option("ethoseo_te_trackemail", $_POST['trackemail']);
+			update_option("ethoseo_te_trackgooglerank", $_POST['trackgooglerank']);
 
+			update_option("ethoseo_te_universal", $_POST['universal']);
 			update_option("ethoseo_te_infooter", $_POST['infooter']);
 			update_option("ethoseo_te_debug", $_POST['debug']);
 
@@ -61,6 +63,13 @@ Nick of Ethoseo Internet Marketing
 					<label for="trackemail" class="description">This will trigger an Event any time a <code>mailto:</code> is triggered.</label>
 				</td>
 			</tr>
+			<tr valign="top">
+				<th scope="row"><label for="trackgooglerank" id="trackgoogleranklabel">Track Google Rank</label></th>
+				<td>
+					<input name="trackgooglerank" type="checkbox" id="trackgooglerank" aria-labelledby="trackgoogleranklabel" value="true" <?php echo get_option("ethoseo_te_trackgooglerank") ? 'checked="checked"' : ""; ?>/>
+					<label for="trackgooglerank" class="description">This will trigger an Event any time a visitor comes from a Google Search, recording the keyword and rank. <em>(These will be counted as non-interactions)</em></label>
+				</td>
+			</tr>
 		</table>
 		<h3>Advanced</h3>
 		<table class="form-table" style="clear: left; width: auto;">
@@ -69,6 +78,13 @@ Nick of Ethoseo Internet Marketing
 				<td>
 					<input name="infooter" type="checkbox" id="infooter" aria-labelledby="infooterlabel" value="true" <?php echo get_option("ethoseo_te_infooter") ? 'checked="checked"' : ""; ?>/>
 					<label for="infooter" class="description">If things are going wrong with your site try enabling this.</label>
+				</td>
+			</tr>
+			<tr valign="top">
+				<th scope="row"><label for="universal" id="universallabel">Use GA Universal</label></th>
+				<td>
+					<input name="universal" type="checkbox" id="universal" aria-labelledby="universallabel" value="true" <?php echo get_option("ethoseo_te_universal") ? 'checked="checked"' : ""; ?>/>
+					<label for="universal" class="description">Only select this if you're using Google's new <code>Analytics.js</code> on your site.</label>
 				</td>
 			</tr>
 			<tr valign="top">
