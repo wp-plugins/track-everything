@@ -1,4 +1,4 @@
-function calculateLabel ($obj, possibilities){
+function ethoseoteCalculateLabel ($obj, possibilities){
 	var possibilities = (typeof possibilities == 'object') ? possibilities : ["te_name", "name", "title", "id"];
 	var eventLabel = null;
 	for (var i = 0; i <= (possibilities.length - 1); i++) {
@@ -10,9 +10,27 @@ function calculateLabel ($obj, possibilities){
 	}
 	return eventLabel;
 }
-function pushEvent ( eventInfo ) {
+function ethoseotePushEvent ( eventInfo ) {
 	if(window.trackeverything.settings.debug){ console.log(eventInfo); }
-	_gaq.push(eventInfo);
+	if(window.trackeverything.settings.universal){
+		var gauEventInfo = {
+			'hitType': 'event',
+			'eventCategory': eventInfo[1],
+			'eventAction': eventInfo[2]
+		};
+		if(eventInfo[3]){
+			gauEventInfo['eventLabel'] = eventInfo[3];
+		}
+		if(eventInfo[4]){
+			gauEventInfo['eventValue'] = eventInfo[4];
+		}
+		if(eventInfo[5]){
+			gauEventInfo['nonInteraction'] = Number(eventInfo[4]);
+		}
+		ga('send', gauEvent);
+	}else{
+		_gaq.push(eventInfo);
+	}
 }
 jQuery(function ($){
 	$.expr[':'].external = function(obj){
@@ -24,14 +42,14 @@ jQuery(function ($){
 	}
 	if(window.trackeverything.settings.forms){
 		$("form").on("submit.jqte.jqtedefault", function (e) {
-			var formLabel = calculateLabel($(this));
+			var formLabel = ethoseoteCalculateLabel($(this));
 
 			var eventInfo = ['_trackEvent', 'Form', 'Submission'];
 			if(formLabel != null){
 				eventInfo.push(formLabel);
 			}
 			if(!(window.trackeverything.settings.search == false && $(this).attr("method") && $(this).attr("method").toLowerCase() == "get" && $(this).children("input[name=s]").length)){
-				pushEvent(eventInfo);
+				ethoseotePushEvent(eventInfo);
 			}
 		});
 		if(window.trackeverything.settings.debug){
@@ -40,10 +58,10 @@ jQuery(function ($){
 	}
 	if(window.trackeverything.settings.outbound){
 		$("a:external").on("click.jqte.jqtedefault keypress.jqte.jqtedefault", function (e) {
-			var eventLabel = calculateLabel($(this), ["te_name", "href"]);
+			var eventLabel = ethoseoteCalculateLabel($(this), ["te_name", "href"]);
 
 			var eventInfo = ['_trackEvent', 'Link', 'Outbound', eventLabel, null, true];
-			pushEvent(eventInfo);
+			ethoseotePushEvent(eventInfo);
 		});
 		if(window.trackeverything.settings.debug){
 			$("a:external").addClass("track-everything track-everything-default track-everything-outbound");
@@ -54,7 +72,7 @@ jQuery(function ($){
 			var eventLabel = $(this).attr("href").substring(7);
 
 			var eventInfo = ['_trackEvent', 'Link', 'Email', eventLabel];
-			pushEvent(eventInfo);
+			ethoseotePushEvent(eventInfo);
 		});
 		if(window.trackeverything.settings.debug){
 			$('a[href^="mailto:"]').addClass("track-everything track-everything-default track-everything-email");
@@ -68,16 +86,35 @@ jQuery(function ($){
 		}
 		var events = [];
 		for (var j = $special.events.length - 1; j >= 0; j--) {
-			events = $special.events[j] + ".jqte.jqtespecial";
+			events.push($special.events[j] + ".jqte.jqtespecial");
 		}
 		$($special.selector).on(events.join(" "), function () {
 			if($special.name.length){
 				$(this).attr("te_oname", $special.name);
 			}
-			var eventLabel = calculateLabel($(this), ["te_oname", "te_name", "name", "title", "id", "href"]);
+			var eventLabel = ethoseoteCalculateLabel($(this), ["te_oname", "te_name", "name", "title", "id", "href"]);
 			var eventInfo = ['_trackEvent', $special.category, $special.action, eventLabel];
 			
-			pushEvent(eventInfo);
+			ethoseotePushEvent(eventInfo);
 		});
 	};
+	if(window.trackeverything.settings.googlerank){
+
+		if (document.referrer.match(/google\.com/gi) && document.referrer.match(/cd/gi)) {
+			var referrerInfo = document.referrer;
+			var r = referrerInfo.match(/cd=(.*?)&/);
+			var rank = parseInt(r[1]);
+			var kw = referrerInfo.match(/q=(.*?)&/);
+			
+			if (kw[1].length > 0) {
+				var keyword = decodeURI(kw[1]);
+			} else {
+				keyword = "(not provided)";
+			}
+
+			var path = document.location.pathname;
+			_gaq.push(['_trackEvent', 'Google Search', keyword, path, rank, true]);
+		}
+
+	}
 });

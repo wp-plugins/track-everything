@@ -2,8 +2,8 @@
 Contributors: ethoseo, nquinlan
 Tags: analytics, google analytics, tracking, event tracking, link tracking, email tracking, form submissions
 Requires at least: 3.0.1
-Tested up to: 3.4.2
-Stable tag: 1.0.1
+Tested up to: 3.5.1
+Stable tag: 1.1.1
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -34,11 +34,8 @@ To track something enter its CSS (_or jQuery_) selector; `Category`, `Action` , 
 = What is a CSS selector and how do I find it?  =
 A CSS selector is a way of referencing a specific object on a page. To find it we reccomend you use [Selector Gadget](http://www.selectorgadget.com/)
 
-= What are Category, Action , and Label?  =
-They are all ways to [define events in Google Analytics](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#Anatomy).
-
-= Can you give me a more in depth explanation of Track Everything and how to use it? =
-Yeah! [Check out Track Everything on our website](http://www.ethoseo.com/tools/track-everything).
+= What are `Category`, `Action` , and `Label`?  =
+`Category`, `Action` , and `Label` are all ways to [define events in Google Analytics](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#Anatomy). 
 
 
 == Screenshots ==
@@ -49,17 +46,37 @@ Yeah! [Check out Track Everything on our website](http://www.ethoseo.com/tools/t
 
 == Changelog ==
 
+= 1.1.1 =
+* Introduced the ability to track Google Rank
+
+= 1.1.0 =
+* Focus on UX improvements
+* Major Re-Work of Plugin Structure
+* Misc Bug Fixes
+
+= 1.0.2 =
+* Fixes to Specific Events
+* Fixes to code in Footer
+
 = 1.0.1 =
-* Fixed bug in the way events were labeled
-* Made clicking an email an interaction rather than a non-interaction
+* Major Analytics Bug Fixes 
 
 = 1.0 =
 * The intial release.
 
 == Upgrade Notice ==
 
+= 1.1.1 =
+Track Everything can now track Google Rank!
+
+= 1.1.0 =
+Version 1.1.0 provides users with a better experience. Better explanations galore, better code, and bug fixes are all included.
+
+= 1.0.2 =
+This version allows for more accurate tracking of Specific Events and contains various bug fixes and improvements.
+
 = 1.0.1 =
 This version fixes bugs in the way Track Everything labels items.
 
-= 1.0 = 
+= 1.0 =
 Initial release.
