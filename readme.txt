@@ -3,7 +3,7 @@ Contributors: ethoseo, nquinlan
 Tags: analytics, google analytics, tracking, event tracking, link tracking, email tracking, form submissions
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -46,6 +46,9 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 
 == Changelog ==
 
+= 1.1.2 =
+* Remedied the possibility of an XSS attack.
+
 = 1.1.1 =
 * Introduced the ability to track Google Rank
 * Added the ability to use Analytics.js rather than ga.js
@@ -67,6 +70,9 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 * The intial release.
 
 == Upgrade Notice ==
+
+=== 1.1.2 ===
+This version is security fix. Please upgrade to prevent the possibility of an attack being directed against your site.
 
 = 1.1.1 =
 Track Everything can now track Google Rank! It also allows for using Analytics.js if you're a really early adopter.
