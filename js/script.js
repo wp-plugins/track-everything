@@ -89,7 +89,7 @@ jQuery(function ($){
 			events.push($special.events[j] + ".jqte.jqtespecial");
 		}
 		$($special.selector).on(events.join(" "), function () {
-			if($special.name.length){
+			if($special.name){
 				$(this).attr("te_oname", $special.name);
 			}
 			var eventLabel = ethoseoteCalculateLabel($(this), ["te_oname", "te_name", "name", "title", "id", "href"]);
