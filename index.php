@@ -48,11 +48,13 @@ function ethoseo_te_print_options () {
 	
 	// Change Special from "click" => on to 0 => "click"
 	$special = get_option("ethoseo_te_special");
-	foreach($special as $key => $value){
-		if($value['events']){
-			$special[$key]['events'] = array_keys($value['events']);
-		}else{
-			unset($special[$key]);
+	if(count($special)){
+		foreach($special as $key => $value){
+			if($value['events']){
+				$special[$key]['events'] = array_keys($value['events']);
+			}else{
+				unset($special[$key]);
+			}
 		}
 	}
 	
