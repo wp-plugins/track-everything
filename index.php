@@ -4,11 +4,11 @@ Plugin Name: Track Everything
 Plugin URI: http://www.ethoseo.com/tools/track-everything
 Description: A plugin capable of adding Google Analytics Event Tracking to <em>everything</em> on a website.
 Author: Ethoseo Internet Marketing
-Version: 1.1.2
+Version: 2.0.0
 Author URI: http://www.ethoseo.com/
 License: MIT License
 
-© 2012 Ethoseo Internet Marketing
+© 2013 Ethoseo Internet Marketing
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -18,7 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 
-$ethoseo_te_version = "1.1.2";
+$ethoseo_te_version = "2.0.0";
 define( 'ETHOSEO_TE_PATH', plugin_dir_path(__FILE__) );
 define( 'ETHOSEO_TE_FILE', __FILE__);
 
@@ -27,6 +27,13 @@ function ethoseo_te_enqueue() {
 	$in_footer = (bool)get_option("ethoseo_te_infooter");
 	wp_enqueue_script(
 		'trackeverything',
+		plugins_url('js/jquery.track-everything.js', __FILE__),
+		array('jquery'),
+		"1.0.0",
+		$in_footer
+	);
+	wp_enqueue_script(
+		'trackeverythinghandler',
 		plugins_url('js/script.js', __FILE__),
 		array('jquery'),
 		$ethoseo_te_version,
@@ -48,13 +55,11 @@ function ethoseo_te_print_options () {
 	
 	// Change Special from "click" => on to 0 => "click"
 	$special = get_option("ethoseo_te_special");
-	if(count($special)){
-		foreach($special as $key => $value){
-			if($value['events']){
-				$special[$key]['events'] = array_keys($value['events']);
-			}else{
-				unset($special[$key]);
-			}
+	foreach($special as $key => $value){
+		if($value['events']){
+			$special[$key]['events'] = array_keys($value['events']);
+		}else{
+			unset($special[$key]);
 		}
 	}
 	
@@ -116,7 +121,7 @@ function ethoseo_te_admin_enque($hook) {
 	$hook_parts = explode("/",$hook);
 	global $ethoseo_te_version;
 	wp_enqueue_style('ethoseo_te_admin_css', plugins_url('css/admin.css', __FILE__), array(), $ethoseo_te_version, 'all');
-	if($hook_parts[1] == "specific" || $hook_parts[1] == "labels"){
+	if(count($hook_parts) > 1 && ($hook_parts[1] == "specific" || $hook_parts[1] == "labels")){
     	wp_enqueue_script('jquery-form-repeater', plugins_url('js/admin.js', __FILE__), array(), "0.1.0", 'all');
     }
     if($hook == "post-new.php" && $_GET['ethoseo-thanks-template'] == 1){

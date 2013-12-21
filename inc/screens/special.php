@@ -1,7 +1,7 @@
 <div class="wrap">
 	<div id="icon-track-everything" class="icon32"><br /></div><h2>Track Everything > Specifics</h2>
 	<?php
-		if($_POST['submit'] == "Save Changes" && wp_verify_nonce($_POST['ethoseo_te_nonce'], plugin_basename( __FILE__ ))){
+		if($_POST['submit'] == "Save Changes"){
 			update_option("ethoseo_te_special", stripslashes_deep($_POST['special']) );
 
 			echo '<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>';
@@ -42,7 +42,6 @@
 			</tr>
 			<?php } ?>
 		</table>
-		<?php wp_nonce_field( plugin_basename( __FILE__ ), 'ethoseo_te_nonce'); ?>
 		<p class="submit"><input type="submit" name="submit" id="submit" class="button-primary" value="Save Changes"	/></p>
 	</form>
 </div>
