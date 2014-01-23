@@ -3,7 +3,7 @@ Contributors: ethoseo, nquinlan
 Tags: analytics, google analytics, tracking, event tracking, link tracking, email tracking, form submissions
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
@@ -48,6 +48,9 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed issue caused by SVN
+
 = 2.0.0 =
 * General stability improvements
 * Changed Track Everything's script to a more sustainable jQuery module
@@ -76,6 +79,9 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 * The intial release.
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+Please upgrade, this version fixes a major error in the current version.
 
 = 2.0.0 =
 This version brings general stability improvements, and fixes a bug around tracking multiple special events.
