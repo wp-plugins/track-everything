@@ -3,11 +3,11 @@ Contributors: ethoseo, nquinlan
 Tags: analytics, google analytics, tracking, event tracking, link tracking, email tracking, form submissions
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.1.2
+Stable tag: 2.0.1
 License: MIT
 License URI: http://opensource.org/licenses/MIT
 
-Track Everything makes using Google Analytics on a WordPress site easy. Attatch tracking to forms, links, or any CSS selector.
+Track Everything makes using Google Analytics on a WordPress site easy. Attach tracking to forms, links, or any CSS selector.
 
 == Description ==
 
@@ -16,6 +16,8 @@ Track Everything makes event tracking simple. By default the plugin tracks form 
 The plugin allows users to label events or completely customize events' `Category`, `Action` , and `Label` [as allowed by Analytics](https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide#Anatomy).
 
 By using Google Analytics Event Tracking you can get a more detailed view of what users do on your site and track beyond what Google Analytics offers by default.
+
+WordPress Track Everything acts as a simple interface for [jQuery Track Everything](https://github.com/nquinlan/jquery-track-everything), allowing anyone to easily track events on their WordPress website.
 
 == Installation ==
 
@@ -42,9 +44,16 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 
 1. The Track Everything Settings Screen
 2. The "Specific" tracking interface
-3. The "Nameing" interface
+3. The "Naming" interface
 
 == Changelog ==
+
+= 2.0.1 =
+* Fixed issue caused by SVN
+
+= 2.0.0 =
+* General stability improvements
+* Changed Track Everything's script to a more sustainable jQuery module
 
 = 1.1.2 =
 * Remedied the possibility of an XSS attack.
@@ -71,7 +80,13 @@ A CSS selector is a way of referencing a specific object on a page. To find it w
 
 == Upgrade Notice ==
 
-=== 1.1.2 ===
+= 2.0.1 =
+Please upgrade, this version fixes a major error in the current version.
+
+= 2.0.0 =
+This version brings general stability improvements, and fixes a bug around tracking multiple special events.
+
+= 1.1.2 =
 This version is security fix. Please upgrade to prevent the possibility of an attack being directed against your site.
 
 = 1.1.1 =
